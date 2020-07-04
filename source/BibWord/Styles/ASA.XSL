@@ -26,7 +26,11 @@
                 DEALINGS IN THE SOFTWARE.
   -->
 
-<xsl:stylesheet version="1.0" xmlns:b="http://schemas.openxmlformats.org/officeDocument/2006/bibliography" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:msxsl="urn:schemas-microsoft-com:xslt">
+<xsl:stylesheet version="1.0"
+ xmlns:b="http://schemas.openxmlformats.org/officeDocument/2006/bibliography"
+ xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+ xmlns:msxsl="urn:schemas-microsoft-com:xslt"
+ >
 
   <!-- Variable containing all necessary data for a certain style of bibliography. -->
   <xsl:variable name="data">
@@ -368,9 +372,15 @@
   <!-- Handle the different types of input documents. -->
   <xsl:template match="/">
 
+    <xsl:apply-templates select="*" />
+
     <xsl:choose>
       <!-- Gets the name of the style as it will be displayed in Word 2007 / 2010. -->
       <xsl:when test="b:StyleName">
+        <xsl:value-of select="msxsl:node-set($data)/general/stylename"/>
+      </xsl:when>
+
+      <xsl:when test="b:OfficeStyleKey">
         <xsl:value-of select="msxsl:node-set($data)/general/stylename"/>
       </xsl:when>
 
@@ -387,7 +397,7 @@
           </xsl:when>
           <xsl:otherwise>
             <!-- Fallback method : use a dummy version number of 1. -->
-            <xsl:text>1</xsl:text>
+            <xsl:text>3</xsl:text>
           </xsl:otherwise>
         </xsl:choose>
       </xsl:when>
@@ -395,6 +405,83 @@
       <!-- Set the name of the style in Word 2013. -->
       <xsl:when test="b:StyleNameLocalized">
         <xsl:value-of select="msxsl:node-set($data)/general/stylename"/>
+      </xsl:when>
+
+      <xsl:when test="b:StyleNameLocalized">
+        <xsl:choose>
+          <xsl:when test="b:StyleNameLocalized/b:Lcid='1033'">
+            <xsl:value-of select="msxsl:node-set($data)/general/stylename"/>
+          </xsl:when>
+          <xsl:when test="b:StyleNameLocalized/b:Lcid='1025'">
+            <xsl:value-of select="msxsl:node-set($data)/general/stylename"/>
+          </xsl:when>
+          <xsl:when test="b:StyleNameLocalized/b:Lcid='1037'">
+            <xsl:text>שיקגו</xsl:text>
+          </xsl:when>
+          <xsl:when test="b:StyleNameLocalized/b:Lcid='1041'">
+            <xsl:value-of select="msxsl:node-set($data)/general/stylename"/>
+          </xsl:when>
+          <xsl:when test="b:StyleNameLocalized/b:Lcid='2052'">
+            <xsl:value-of select="msxsl:node-set($data)/general/stylename"/>
+          </xsl:when>
+          <xsl:when test="b:StyleNameLocalized/b:Lcid='1028'">
+            <xsl:value-of select="msxsl:node-set($data)/general/stylename"/>
+          </xsl:when>
+          <xsl:when test="b:StyleNameLocalized/b:Lcid='1042'">
+            <xsl:value-of select="msxsl:node-set($data)/general/stylename"/>
+          </xsl:when>
+          <xsl:when test="b:StyleNameLocalized/b:Lcid='1036'">
+            <xsl:value-of select="msxsl:node-set($data)/general/stylename"/>
+          </xsl:when>
+          <xsl:when test="b:StyleNameLocalized/b:Lcid='1040'">
+            <xsl:value-of select="msxsl:node-set($data)/general/stylename"/>
+          </xsl:when>
+          <xsl:when test="b:StyleNameLocalized/b:Lcid='3082'">
+            <xsl:value-of select="msxsl:node-set($data)/general/stylename"/>
+          </xsl:when>
+          <xsl:when test="b:StyleNameLocalized/b:Lcid='1043'">
+            <xsl:value-of select="msxsl:node-set($data)/general/stylename"/>
+          </xsl:when>
+          <xsl:when test="b:StyleNameLocalized/b:Lcid='1031'">
+            <xsl:value-of select="msxsl:node-set($data)/general/stylename"/>
+          </xsl:when>
+          <xsl:when test="b:StyleNameLocalized/b:Lcid='1046'">
+            <xsl:value-of select="msxsl:node-set($data)/general/stylename"/>
+          </xsl:when>
+          <xsl:when test="b:StyleNameLocalized/b:Lcid='1049'">
+            <xsl:value-of select="msxsl:node-set($data)/general/stylename"/>
+          </xsl:when>
+          <xsl:when test="b:StyleNameLocalized/b:Lcid='1035'">
+            <xsl:value-of select="msxsl:node-set($data)/general/stylename"/>
+          </xsl:when>
+          <xsl:when test="b:StyleNameLocalized/b:Lcid='1054'">
+            <xsl:value-of select="msxsl:node-set($data)/general/stylename"/>
+          </xsl:when>
+          <xsl:when test="b:StyleNameLocalized/b:Lcid='1057'">
+            <xsl:value-of select="msxsl:node-set($data)/general/stylename"/>
+          </xsl:when>
+          <xsl:when test="b:StyleNameLocalized/b:Lcid='1053'">
+            <xsl:value-of select="msxsl:node-set($data)/general/stylename"/>
+          </xsl:when>
+          <xsl:when test="b:StyleNameLocalized/b:Lcid='1030'">
+            <xsl:value-of select="msxsl:node-set($data)/general/stylename"/>
+          </xsl:when>
+          <xsl:when test="b:StyleNameLocalized/b:Lcid='1044'">
+            <xsl:value-of select="msxsl:node-set($data)/general/stylename"/>
+          </xsl:when>
+          <xsl:when test="b:StyleNameLocalized/b:Lcid='1045'">
+            <xsl:value-of select="msxsl:node-set($data)/general/stylename"/>
+          </xsl:when>
+          <xsl:when test="b:StyleNameLocalized/b:Lcid='2070'">
+            <xsl:value-of select="msxsl:node-set($data)/general/stylename"/>
+          </xsl:when>
+          <xsl:when test="b:StyleNameLocalized/b:Lcid='1029'">
+            <xsl:value-of select="msxsl:node-set($data)/general/stylename"/>
+          </xsl:when>
+          <xsl:when test="b:StyleNameLocalized/b:Lcid='1055'">
+            <xsl:value-of select="msxsl:node-set($data)/general/stylename"/>
+          </xsl:when>
+        </xsl:choose>
       </xsl:when>
 
       <!-- Gets a description of the style. (Word 2008 or later) -->
